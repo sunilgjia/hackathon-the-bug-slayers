@@ -16,4 +16,7 @@
     <string name="added_by_you">Added by you</string>
     <string name="shared_with_you">Shared with you</string>
     <string name="add_account">Add account</string>
+    <string name="button_ok">Ok</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="delete_confirmation_message">Are you sure you want to delete account?</string>
 </resources>

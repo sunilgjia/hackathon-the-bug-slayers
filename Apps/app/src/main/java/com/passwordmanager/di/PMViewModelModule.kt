@@ -6,6 +6,7 @@ package com.passwordmanager.di
 
 import androidx.lifecycle.ViewModel
 import com.passwordmanager.accountslist.AccountListViewModel
+import com.passwordmanager.addaccount.AddAccountViewModel
 import com.passwordmanager.shared.di.ViewModelMapKey
 import com.passwordmanager.shared.di.ViewModelModule
 import dagger.Binds
@@ -19,4 +20,9 @@ abstract class PMViewModelModule : ViewModelModule(){
     @IntoMap
     @ViewModelMapKey(AccountListViewModel::class)
     abstract fun bindAccountListViewModel(viewModel: AccountListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelMapKey(AddAccountViewModel::class)
+    abstract fun bindAddAccountViewModel(viewModel: AddAccountViewModel): ViewModel
 }

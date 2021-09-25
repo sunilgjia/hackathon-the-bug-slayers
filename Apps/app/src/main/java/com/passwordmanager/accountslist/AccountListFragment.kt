@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.passwordmanager.utils.Constants
 import com.passwordmanager.databinding.FragmentListBinding
 import com.passwordmanager.di.PMComponentProvider
+import com.passwordmanager.utils.Constants
 import javax.inject.Inject
 
 class AccountListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
-    private lateinit var adapter : AccountListAdapter
+    private lateinit var adapter: AccountListAdapter
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -24,6 +25,7 @@ class AccountListFragment : Fragment() {
         (requireActivity().application as PMComponentProvider).getPMComponent().inject(this)
         viewModel = ViewModelProvider(this, viewModelFactory)[AccountListViewModel::class.java]
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,7 +48,7 @@ class AccountListFragment : Fragment() {
         fun getInstance(type: String): AccountListFragment {
             return AccountListFragment().apply {
                 arguments = Bundle().apply {
-                    putString(Constants.Bundle.KEY_TYPE,"")
+                    putString(Constants.Bundle.KEY_TYPE, "")
                 }
             }
         }
