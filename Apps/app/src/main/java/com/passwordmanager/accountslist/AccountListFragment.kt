@@ -98,7 +98,6 @@ class AccountListFragment : Fragment(), ClickListener {
             context?.showAlert(
                 getString(R.string.delete_confirmation_message)
             ) { dialog, which ->
-
             }
         }
     }

@@ -31,6 +31,9 @@ class AccountListViewModel @Inject constructor(
     private val _credListResponse = MutableLiveData<List<CredModel?>?>()
     val credListResponse: LiveData<List<CredModel?>?> = _credListResponse
 
+    private val _deleteResponse = MutableLiveData<Boolean?>()
+    val deleteResponse: LiveData<Boolean?> = _deleteResponse
+
     fun setType(isShared: Boolean?) {
         isShared?.let {
             viewModelScope.launch {
@@ -49,6 +52,27 @@ class AccountListViewModel @Inject constructor(
                     is ApiEmptyResponse -> {
                         _noData.postValue(true)
                     }
+                }
+            }
+        }
+    }
+
+    fun deleteAccount(userId : Int){
+        viewModelScope.launch {
+            val response =
+                credRepository.deleteUser(userId)
+            when (response) {
+                is ApiSuccessResponse -> {
+                    _deleteResponse.postValue(response.body)
+                }
+                is ApiErrorResponse -> {
+                    _apiError.postValue(response.errorMessage)
+                }
+                is ApiNoNetworkResponse -> {
+                    _noNetwork.postValue(resourceProvider.getString(R.string.no_network_message))
+                }
+                is ApiEmptyResponse -> {
+                    _noData.postValue(true)
                 }
             }
         }

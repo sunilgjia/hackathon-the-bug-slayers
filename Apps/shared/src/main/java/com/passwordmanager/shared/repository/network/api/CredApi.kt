@@ -8,6 +8,7 @@ import retrofit2.http.Query
 
 private const val GET_ALL_USER = "user/get-all-users/2"
 private const val GET_CRED = "credential"
+private const val DELETE_CRED = "user"
 
 interface CredApi {
     @GET(GET_ALL_USER)
@@ -19,4 +20,9 @@ interface CredApi {
         @Query("isShared") isShared: Boolean,
         @Query("UserId") userId: Int
     ): Response<List<CredModel>>
+
+    @GET(DELETE_CRED)
+    suspend fun deleteAccount(
+        @Query("UserId") userId: Int
+    ): Response<Boolean>
 }

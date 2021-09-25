@@ -31,4 +31,14 @@ class CredRepository @Inject constructor(
             ApiResponse.create(e.fillInStackTrace())
         }
     }
+
+    suspend fun deleteUser(isShared : Int): ApiResponse<Boolean> {
+        return try {
+            val response = credApi.deleteAccount(isShared)
+            ApiResponse.create(response = response)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ApiResponse.create(e.fillInStackTrace())
+        }
+    }
 }
