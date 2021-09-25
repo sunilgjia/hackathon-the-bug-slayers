@@ -39,6 +39,7 @@ namespace PasswordManager.API
                 });
 
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<ICredentialRepository, CredentialRepository>();
 
             services.AddControllers();
         }
