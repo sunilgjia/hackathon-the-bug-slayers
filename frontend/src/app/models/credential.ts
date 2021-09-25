@@ -5,7 +5,7 @@ export class Credential {
   password: string;
   description: string;
   userId: number;
-  
+
   canView: string;
   canEdit: string;
   canDelete: string;

@@ -52,7 +52,7 @@ export class CredentialListComponent implements OnInit {
   }
 
   copyToClipBoard(password: string) {
-    this.toastr.error("Password copied successfully");
+    this.toastr.success("Password copied successfully");
     var copyText = document.getElementById("myInput");
     // copyText.select();
     // copyText.setSelectionRange(0, 99999);
@@ -71,6 +71,19 @@ export class CredentialListComponent implements OnInit {
       },
       (reason) => {
         // on dismiss
+      }
+    );
+  }
+
+  delete(id: any) {
+    this.credentialSerivce.delete(id).subscribe(
+      (response: any) => {
+        this.toastr.success("Credential copied successfully");
+        this.getAllCredential();
+      },
+      (error: any) => {
+        this.toastr.error("Error", error?.message || "Something went wrong");
+        this.isLoading = false;
       }
     );
   }

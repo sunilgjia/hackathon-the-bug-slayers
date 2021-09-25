@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { Credential, User } from "../../../../models";
 import { CredentialService, UserService } from "../../../../services";
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   templateUrl: "add-edit-credential.component.html",
@@ -55,7 +55,7 @@ export class AddEditCredentialComponent implements OnInit {
         this.isFormSubmitted = false;
       },
       (error: any) => {
-        this.toastr.error('Error', error?.message || "Something went wrong" );
+        this.toastr.error("Error", error?.message || "Something went wrong");
         this.isLoading = false;
         this.isFormSubmitted = false;
       }
@@ -82,7 +82,7 @@ export class AddEditCredentialComponent implements OnInit {
       },
       (error: any) => {
         this.isLoading = false;
-        this.toastr.error('Error', error?.message || "Something went wrong" );
+        this.toastr.error("Error", error?.message || "Something went wrong");
         this.isFormSubmitted = false;
       }
     );
