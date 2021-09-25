@@ -3,19 +3,21 @@ package com.passwordmanager.accountslist
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.passwordmanager.R
 import com.passwordmanager.databinding.RowAccountsListBinding
+import com.passwordmanager.shared.repository.models.CredModel
+import com.passwordmanager.utils.ClickListener
 import com.passwordmanager.utils.showAlert
 import com.passwordmanager.utils.showToast
 
-class AccountListAdapter : RecyclerView.Adapter<AccountListAdapter.MyViewHolder>() {
+class AccountListAdapter(private val listener : ClickListener) : RecyclerView.Adapter<AccountListAdapter.MyViewHolder>() {
 
     private lateinit var binding: RowAccountsListBinding
+    private var credList: List<CredModel?> = listOf()
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
@@ -30,22 +32,30 @@ class AccountListAdapter : RecyclerView.Adapter<AccountListAdapter.MyViewHolder>
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val cred = credList[position]
+
         binding.btnCopyPassword.setOnClickListener {
-            copyToClipBoard(holder.itemView.context,"")
+            copyToClipBoard(holder.itemView.context, cred?.password)
         }
 
+        binding.btnEdit.setOnClickListener {
+            listener.onItemClickListener(cred, view = it)
+        }
         binding.btnDelete.setOnClickListener {
-            it?.context?.getString(R.string.delete_confirmation_message).orEmpty()?.let { it1 ->
-                it?.context?.showAlert(
-                    it1
-                ) { dialog, which ->
-
-                }
-            }
+            listener.onItemClickListener(cred, view = it)
         }
 
+        cred?.let {
+            binding.tvName.text = it.name
+            binding.tvEmail.text = it.userName
+
+            binding.btnEdit.visibility = if(it.canEdit) View.VISIBLE else View.GONE
+            binding.btnDelete.visibility = if(it.canDelete) View.VISIBLE else View.GONE
+            binding.btnCopyPassword.visibility = if(it.canView) View.VISIBLE else View.GONE
+        }
     }
-    private fun copyToClipBoard(context :Context,message: String) {
+
+    private fun copyToClipBoard(context: Context, message: String?) {
         val clipBoard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("label", message)
         clipBoard.setPrimaryClip(clipData)
@@ -53,6 +63,11 @@ class AccountListAdapter : RecyclerView.Adapter<AccountListAdapter.MyViewHolder>
     }
 
     override fun getItemCount(): Int {
-       return 10
+        return credList.size
+    }
+
+    fun setItems(credModel: List<CredModel?>) {
+        credList = credModel
+        notifyDataSetChanged()
     }
 }

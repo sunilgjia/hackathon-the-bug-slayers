@@ -25,4 +25,6 @@
     <string name="please_enter_email">Please enter email</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="please_enter_description">Please enter description</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="no_network_message">Please connect to the internet and try again.</string>
 </resources>

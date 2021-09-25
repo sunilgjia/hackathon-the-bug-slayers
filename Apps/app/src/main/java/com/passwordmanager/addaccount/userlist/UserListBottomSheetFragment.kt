@@ -86,7 +86,7 @@ class UserListBottomSheetFragment : BottomSheetDialogFragment(), ClickListener {
         super.onDetach()
         selectedUserList.clear()
     }
-    override fun onItemClickListener(item: Any?) {
+    override fun onItemClickListener(item: Any?, view: View) {
         if (item is UserModel?){
             val list = selectedUserList.find { it?.email == item?.email }
             if (list!=null){

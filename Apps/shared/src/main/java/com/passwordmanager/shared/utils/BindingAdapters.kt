@@ -53,3 +53,8 @@ fun setStrikeThrough(textView: TextView, strike: Boolean) {
         textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
     }
 }
+
+@BindingAdapter("goneUnless")
+fun goneUnless(view: View, visible: Boolean) {
+    view.visibility = if (visible) View.VISIBLE else View.GONE
+}

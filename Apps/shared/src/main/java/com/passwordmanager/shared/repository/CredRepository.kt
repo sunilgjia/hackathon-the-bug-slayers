@@ -21,4 +21,14 @@ class CredRepository @Inject constructor(
             ApiResponse.create(e.fillInStackTrace())
         }
     }
+
+    suspend fun getCred(isShared : Boolean): ApiResponse<List<CredModel>> {
+        return try {
+            val response = credApi.getAllUserCred(isShared,2)
+            ApiResponse.create(response = response)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ApiResponse.create(e.fillInStackTrace())
+        }
+    }
 }
