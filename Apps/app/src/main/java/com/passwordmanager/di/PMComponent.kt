@@ -3,7 +3,7 @@
  */
 
 package com.passwordmanager.di
-import com.passwordmanager.MainActivity
+import com.passwordmanager.DashboardActivity
 import com.passwordmanager.shared.di.CoreComponent
 import dagger.Component
 
@@ -14,6 +14,6 @@ import dagger.Component
 )
 interface PMComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun inject(mainActivity: DashboardActivity)
 
 }
