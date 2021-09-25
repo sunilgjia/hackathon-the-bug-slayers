@@ -41,4 +41,15 @@ class CredRepository @Inject constructor(
             ApiResponse.create(e.fillInStackTrace())
         }
     }
+
+    suspend fun getCredById(id: Int): ApiResponse<CredModel> {
+        return try {
+            val response = credApi.getCred(1)
+            ApiResponse.create(response = response)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ApiResponse.create(e.fillInStackTrace())
+        }
+    }
+
 }

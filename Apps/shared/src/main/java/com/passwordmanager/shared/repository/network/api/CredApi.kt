@@ -4,11 +4,13 @@ import com.passwordmanager.shared.repository.models.CredModel
 import com.passwordmanager.shared.repository.models.UserModel
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val GET_ALL_USER = "user/get-all-users/2"
 private const val GET_CRED = "credential"
 private const val DELETE_CRED = "user"
+private const val GET_CRED_BY_ID = "credential/{id}"
 
 interface CredApi {
     @GET(GET_ALL_USER)
@@ -25,4 +27,9 @@ interface CredApi {
     suspend fun deleteAccount(
         @Query("userId") userId: Int
     ): Response<Boolean>
+
+    @GET(GET_CRED_BY_ID)
+    suspend fun getCred(
+        @Path("id") id :Int,
+    ): Response<CredModel>
 }

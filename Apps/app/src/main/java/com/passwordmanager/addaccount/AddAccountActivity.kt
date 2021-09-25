@@ -31,6 +31,7 @@ class AddAccountActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory)[AddAccountViewModel::class.java]
         setOnClickListener()
         initAdapter()
+        viewModel.getCredById(intent.getIntExtra("credId",0))
     }
 
     private fun setOnClickListener() {
