@@ -12,14 +12,18 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.passwordmanager.addaccount.AddAccountViewModel
 import com.passwordmanager.databinding.FragmentBottomSheetUserListBinding
 import com.passwordmanager.di.PMComponent
+import com.passwordmanager.shared.repository.models.UserModel
+import com.passwordmanager.utils.ClickListener
 import com.passwordmanager.utils.showAlert
 import javax.inject.Inject
 
-class UserListBottomSheetFragment : BottomSheetDialogFragment() {
+class UserListBottomSheetFragment : BottomSheetDialogFragment(), ClickListener {
 
     private lateinit var binding : FragmentBottomSheetUserListBinding
     private lateinit var adapter : UserListAdapter
     private val viewModel by activityViewModels<AddAccountViewModel>()
+    private var listner: ((ArrayList<UserModel?>) -> Unit)? = null
+    private var selectedUserList = ArrayList<UserModel?>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,11 +65,35 @@ class UserListBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun setAdapter() {
-        adapter = UserListAdapter()
+        adapter = UserListAdapter(this)
         binding.rvUserList.adapter =adapter
     }
 
     private fun setOnClickListeners() {
         binding.ivClose.setOnClickListener { dismiss() }
+
+        binding.btnDone.setOnClickListener {
+            listner?.invoke(selectedUserList)
+            dismiss()
+        }
+    }
+
+    fun setListener(listener: (ArrayList<UserModel?>) -> Unit){
+        listner = listener
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        selectedUserList.clear()
+    }
+    override fun onItemClickListener(item: Any?) {
+        if (item is UserModel?){
+            val list = selectedUserList.find { it?.email == item?.email }
+            if (list!=null){
+                selectedUserList.remove(item)
+            }else{
+                selectedUserList.add(item)
+            }
+        }
     }
 }

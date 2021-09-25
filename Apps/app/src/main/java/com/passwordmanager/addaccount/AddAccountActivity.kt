@@ -29,7 +29,11 @@ class AddAccountActivity : AppCompatActivity() {
 
     private fun setOnClickListener() {
         binding.btnShareUser.setOnClickListener {
-            UserListBottomSheetFragment().show(supportFragmentManager, "User List")
+            val userListBottomSheetFragment = UserListBottomSheetFragment()
+            userListBottomSheetFragment.setListener {
+                adapter.setItems(it)
+            }
+            userListBottomSheetFragment.show(supportFragmentManager, "User List")
         }
     }
 

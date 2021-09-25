@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.passwordmanager.R
 import com.passwordmanager.databinding.RowUsersListBinding
 import com.passwordmanager.shared.repository.models.UserModel
+import com.passwordmanager.utils.ClickListener
 
-class UserListAdapter : RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
+class UserListAdapter(private val listener : ClickListener) : RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
 
     private lateinit var binding : RowUsersListBinding
     private var userList : List<UserModel?> = listOf()
@@ -16,6 +17,9 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
         fun bind(userModel: UserModel?) {
             userModel?.let {
                 binding.tvPayment.text = it.name
+            }
+            binding.tvPayment.setOnCheckedChangeListener { buttonView, isChecked ->
+                listener.onItemClickListener(userModel)
             }
         }
 
