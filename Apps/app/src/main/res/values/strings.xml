@@ -19,4 +19,5 @@
     <string name="button_ok">Ok</string>
     <string name="button_cancel">Cancel</string>
     <string name="delete_confirmation_message">Are you sure you want to delete account?</string>
+    <string name="password_copied">Password copied to clipboard</string>
 </resources>

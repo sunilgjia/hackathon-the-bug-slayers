@@ -6,11 +6,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.passwordmanager.R
 import com.passwordmanager.databinding.RowUsersListBinding
+import com.passwordmanager.shared.repository.models.UserModel
 
 class UserListAdapter : RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
 
     private lateinit var binding : RowUsersListBinding
+    private var userList : List<UserModel?> = listOf()
     inner class MyViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+        fun bind(userModel: UserModel?) {
+            userModel?.let {
+                binding.tvPayment.text = it.name
+            }
+        }
+
         init {
          binding = RowUsersListBinding.bind(view)
         }
@@ -22,7 +30,13 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.bind(userList[position])
     }
 
-    override fun getItemCount(): Int =10
+    override fun getItemCount(): Int = userList.size
+
+    fun setItems(it: List<UserModel?>) {
+        userList = it
+        notifyDataSetChanged()
+    }
 }

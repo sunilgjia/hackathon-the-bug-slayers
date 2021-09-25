@@ -3,6 +3,7 @@ package com.passwordmanager.utils
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.widget.Toast
 import com.passwordmanager.R
 
 fun Context.showAlert(
@@ -15,4 +16,8 @@ fun Context.showAlert(
         .setNegativeButton(getString(R.string.button_cancel), null)
         .create()
         .show()
+}
+
+fun Context.showToast(message : String){
+    Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
 }

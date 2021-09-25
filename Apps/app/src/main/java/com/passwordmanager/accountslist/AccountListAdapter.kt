@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.passwordmanager.R
 import com.passwordmanager.databinding.RowAccountsListBinding
 import com.passwordmanager.utils.showAlert
+import com.passwordmanager.utils.showToast
 
 class AccountListAdapter : RecyclerView.Adapter<AccountListAdapter.MyViewHolder>() {
 
@@ -48,6 +49,7 @@ class AccountListAdapter : RecyclerView.Adapter<AccountListAdapter.MyViewHolder>
         val clipBoard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("label", message)
         clipBoard.setPrimaryClip(clipData)
+        context.showToast(context.getString(R.string.password_copied))
     }
 
     override fun getItemCount(): Int {
