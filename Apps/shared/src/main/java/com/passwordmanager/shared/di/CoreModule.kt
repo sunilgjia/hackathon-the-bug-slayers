@@ -2,10 +2,10 @@ package com.passwordmanager.shared.di
 
 import android.app.Application
 import android.content.Context
-import com.passwordmanager.shared.repository.CustomerRepository
+import com.passwordmanager.shared.repository.CredRepository
 import com.passwordmanager.shared.repository.network.AdminRetrofitClientInstance
 import com.passwordmanager.shared.repository.network.CustomerRetrofitClientInstance
-import com.passwordmanager.shared.repository.network.api.CustomerApi
+import com.passwordmanager.shared.repository.network.api.CredApi
 import com.passwordmanager.shared.utils.ResourceProvider
 import com.passwordmanager.shared.utils.ResourceProviderImpl
 import dagger.Module
@@ -50,14 +50,14 @@ class CoreModule(val application: Application) {
 
     @Reusable
     @Provides
-    fun provideCustomerApi(retrofit: Retrofit): CustomerApi {
-        return retrofit.create(CustomerApi::class.java)
+    fun provideCredApi(retrofit: Retrofit): CredApi {
+        return retrofit.create(CredApi::class.java)
     }
     @Reusable
     @Provides
-    fun provideCustomerRepository(
-        customerApi: CustomerApi
-    ): CustomerRepository {
-        return CustomerRepository(customerApi)
+    fun provideCredRepository(
+        credApi: CredApi
+    ): CredRepository {
+        return CredRepository(credApi)
     }
 }

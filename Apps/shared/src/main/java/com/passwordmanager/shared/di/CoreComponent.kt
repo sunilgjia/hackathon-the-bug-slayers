@@ -2,9 +2,9 @@ package com.passwordmanager.shared.di
 
 import android.app.Application
 import android.content.Context
-import com.passwordmanager.shared.repository.CustomerRepository
+import com.passwordmanager.shared.repository.CredRepository
 import com.passwordmanager.shared.repository.local.Session
-import com.passwordmanager.shared.repository.network.api.CustomerApi
+import com.passwordmanager.shared.repository.network.api.CredApi
 import com.passwordmanager.shared.utils.ResourceProvider
 import dagger.Component
 import retrofit2.Retrofit
@@ -28,7 +28,7 @@ interface CoreComponent {
     @Named("admin")
     fun provideAdminRetrofit(): Retrofit
 
-    fun provideCustomerApi(): CustomerApi
+    fun provideCredApi(): CredApi
 
-    fun provideCustomerRepository(): CustomerRepository
+    fun provideCredRepository(): CredRepository
 }
