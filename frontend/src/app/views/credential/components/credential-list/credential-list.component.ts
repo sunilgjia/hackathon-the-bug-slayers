@@ -11,6 +11,8 @@ export class CredentialListComponent implements OnInit {
   public isLoading: boolean = false;
   public isShared: boolean = false;
 
+  public credentials: Credential[] = [];
+
   constructor(
     private modalSerivce: NgbModal,
     private credentialSerivce: CredentialService
@@ -22,6 +24,7 @@ export class CredentialListComponent implements OnInit {
   }
 
   changeType() {
+    this.credentials = [];
     this.getAllCredential();
   }
 
@@ -31,6 +34,7 @@ export class CredentialListComponent implements OnInit {
       .getAll(localStorage.getItem("userId"), this.isShared)
       .subscribe(
         (response: any) => {
+          this.credentials = [];
           this.isLoading = false;
         },
         (error: any) => {
