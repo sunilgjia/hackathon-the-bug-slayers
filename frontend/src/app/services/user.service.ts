@@ -7,7 +7,7 @@ import { GlobalConstant } from "../models";
 export class UserService {
   constructor(private httpService: HttpService) {}
 
-  getAll() {
-    return this.httpService.get(GlobalConstant.apiUrl.User.getAll);
+  getAll(userId: string) {
+    return this.httpService.get(`${GlobalConstant.apiUrl.User.getAll}/${userId}`);
   }
 }

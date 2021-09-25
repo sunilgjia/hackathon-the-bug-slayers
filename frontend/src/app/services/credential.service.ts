@@ -6,8 +6,10 @@ import { GlobalConstant } from "../models";
 export class CredentialService {
   constructor(private httpSerivce: HttpService) {}
 
-  getAll() {
-    return this.httpSerivce.get(GlobalConstant.apiUrl.Credential.getAll);
+  getAll(userId: any, isShared: boolean) {
+    return this.httpSerivce.get(
+      `${GlobalConstant.apiUrl.Credential.getAll}?isShared=${isShared}&UserId=${userId}`
+    );
   }
 
   getById(id: number) {

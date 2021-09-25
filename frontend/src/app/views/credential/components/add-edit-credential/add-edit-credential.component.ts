@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { Credential, User } from "../../../../models";
 import { CredentialService, UserService } from "../../../../services";
 
@@ -11,6 +12,8 @@ export class AddEditCredentialComponent implements OnInit {
   isLoading: boolean = false;
   isFormSubmitted: boolean = false;
 
+  @Input() public id;
+
   form: FormGroup;
 
   users: User[] = [];
@@ -18,10 +21,12 @@ export class AddEditCredentialComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private credentialService: CredentialService,
-    private userService: UserService
+    private userService: UserService,
+    public activeModal: NgbActiveModal
   ) {}
 
   ngOnInit() {
+    console.log(this.id);
     this.buildForm(new Credential({}));
     this.getUsers();
   }
@@ -42,9 +47,9 @@ export class AddEditCredentialComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getAll().subscribe(
+    this.userService.getAll(localStorage.getItem("userId")).subscribe(
       (response: any) => {
-        this.users = [];
+        this.users = response;
         this.isFormSubmitted = false;
       },
       (error: any) => {
@@ -52,6 +57,10 @@ export class AddEditCredentialComponent implements OnInit {
         this.isFormSubmitted = false;
       }
     );
+  }
+
+  public close(status: boolean) {
+    this.activeModal.close(status);
   }
 
   onSubmit() {
