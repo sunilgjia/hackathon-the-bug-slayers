@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ToastrService } from "ngx-toastr";
 import { AddEditCredentialComponent } from "..";
+import { Credential } from "../../../../models";
 import { CredentialService } from "../../../../services";
 
 @Component({
@@ -15,7 +17,8 @@ export class CredentialListComponent implements OnInit {
 
   constructor(
     private modalSerivce: NgbModal,
-    private credentialSerivce: CredentialService
+    private credentialSerivce: CredentialService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -34,10 +37,11 @@ export class CredentialListComponent implements OnInit {
       .getAll(localStorage.getItem("userId"), this.isShared)
       .subscribe(
         (response: any) => {
-          this.credentials = [];
+          this.credentials = response;
           this.isLoading = false;
         },
         (error: any) => {
+          this.toastr.error("Error", error?.message || "Something went wrong");
           this.isLoading = false;
         }
       );

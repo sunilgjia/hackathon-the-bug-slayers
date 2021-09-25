@@ -29,6 +29,8 @@ import { AppComponent } from "./components";
 import { DefaultLayoutComponent } from "./containers";
 import { CredentialService, HttpService, UserService } from "./services";
 import { LoginComponent } from "./views/login/login.component";
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+
 
 const APP_CONTAINERS = [DefaultLayoutComponent];
 
@@ -53,6 +55,8 @@ const APP_CONTAINERS = [DefaultLayoutComponent];
     IconSetModule.forRoot(),
     HttpClientModule,
     NgbModule,
+    ToastrModule,
+    ToastrModule.forRoot()
   ],
   declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent],
   providers: [
@@ -63,6 +67,7 @@ const APP_CONTAINERS = [DefaultLayoutComponent];
     HttpService,
     UserService,
     CredentialService,
+    ToastrService
   ],
   bootstrap: [AppComponent],
 })

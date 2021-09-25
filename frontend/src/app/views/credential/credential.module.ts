@@ -5,6 +5,7 @@ import { ChartsModule } from "ng2-charts";
 import { ButtonsModule } from "ngx-bootstrap/buttons";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TabsModule } from "ngx-bootstrap/tabs";
+import { ToastrService } from "ngx-toastr";
 import {
   AddEditCredentialComponent,
   CredentialListComponent,
@@ -29,5 +30,8 @@ import { CredentialRoutingModule } from "./credential-routing.module";
     LoaderComponent,
   ],
   entryComponents: [AddEditCredentialComponent],
+  providers: [
+    ToastrService
+  ]
 })
 export class CredentialModule {}
