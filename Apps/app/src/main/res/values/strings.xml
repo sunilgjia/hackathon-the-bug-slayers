@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">PasswordManger</string>
+    <string name="name">Name</string>
+    <string name="username_email">Username/Email</string>
+    <string name="password">Password</string>
+    <string name="share_with">Share With</string>
+    <string name="selected_user_to_share">Selected user to share</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="view">View</string>
+    <string name="description">Description</string>
+    <string name="copy_password">Copy Password</string>
+    <string name="select_users">Select Users</string>
+    <string name="close">close</string>
+    <string name="check_user_list">check user list</string>
+    <string name="added_by_you">Added by you</string>
+    <string name="shared_with_you">Shared with you</string>
+    <string name="add_account">Add account</string>
 </resources>

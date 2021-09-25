@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Name"
+        android:layout_marginStart="@dimen/margin_10"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:id="@+id/tvName"/>
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="abcd@gmail.com"/>
+
+    <CheckBox
+        android:id="@+id/cbView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintEnd_toStartOf="@id/cbEdit"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintStart_toStartOf="@id/tvName"/>
+
+    <CheckBox
+        android:id="@+id/cbEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintEnd_toStartOf="@id/cbDelete"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintStart_toEndOf="@id/cbView"/>
+
+    <CheckBox
+        android:id="@+id/cbDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:layout_marginEnd="@dimen/margin_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintStart_toEndOf="@id/cbEdit"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
