@@ -9,6 +9,7 @@ import com.passwordmanager.shared.repository.models.ApiErrorResponse
 import com.passwordmanager.shared.repository.models.ApiSuccessResponse
 import com.passwordmanager.shared.repository.models.UserModel
 import kotlinx.coroutines.launch
+import java.util.ArrayList
 import javax.inject.Inject
 
 class AddAccountViewModel @Inject constructor(
@@ -36,6 +37,18 @@ class AddAccountViewModel @Inject constructor(
                     _showProgress.postValue(false)
                 }
             }
+        }
+    }
+
+    fun addAccount(
+        name: String,
+        email: String,
+        password: String,
+        description: String,
+        selectedUserList: ArrayList<UserModel?>
+    ) {
+        viewModelScope.launch {
+
         }
     }
 }

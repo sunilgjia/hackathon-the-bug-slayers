@@ -21,4 +21,8 @@
     <string name="delete_confirmation_message">Are you sure you want to delete account?</string>
     <string name="password_copied">Password copied to clipboard</string>
     <string name="done">Done</string>
+    <string name="please_enter_name">Please enter name</string>
+    <string name="please_enter_email">Please enter email</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter_description">Please enter description</string>
 </resources>
