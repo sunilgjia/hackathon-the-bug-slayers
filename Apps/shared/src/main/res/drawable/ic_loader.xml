@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright (c) 2020. Binate Station Private Limited. All rights reserved.
+  ~
+  ~ Last Updated at 26/10/20 1:02 PM.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M19,19h20v20h-20z" />
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M40,19h20v20h-20z" />
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M61,19h20v20h-20z" />
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M19,40h20v20h-20z" />
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M61,40h20v20h-20z" />
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M19,61h20v20h-20z" />
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M40,61h20v20h-20z" />
+    <path
+        android:fillColor="#3087c8"
+        android:pathData="M61,61h20v20h-20z" />
+</vector>
