@@ -23,6 +23,6 @@ interface CredApi {
 
     @GET(DELETE_CRED)
     suspend fun deleteAccount(
-        @Query("UserId") userId: Int
+        @Query("userId") userId: Int
     ): Response<Boolean>
 }

@@ -74,6 +74,12 @@ class AccountListFragment : Fragment(), ClickListener {
                 ) { _, _ -> }
             }
         })
+
+        viewModel.deleteResponse.observe(viewLifecycleOwner,{
+            it?.let {
+                viewModel.setType(arguments?.getBoolean(Constants.Bundle.KEY_TYPE))
+            }
+        })
     }
 
     companion object {
@@ -98,6 +104,7 @@ class AccountListFragment : Fragment(), ClickListener {
             context?.showAlert(
                 getString(R.string.delete_confirmation_message)
             ) { dialog, which ->
+                viewModel.deleteAccount((item as CredModel).id)
             }
         }
     }
