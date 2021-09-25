@@ -1,6 +1,11 @@
-import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+import {
+  CommonModule,
+  HashLocationStrategy,
+  LocationStrategy
+} from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
@@ -8,17 +13,18 @@ import {
   AppBreadcrumbModule,
   AppFooterModule,
   AppHeaderModule,
-  AppSidebarModule,
+  AppSidebarModule
 } from "@coreui/angular";
 import { IconModule, IconSetModule } from "@coreui/icons-angular";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ChartsModule } from "ng2-charts";
 // Import 3rd party components
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
-import { AppComponent } from "./app.component";
 // Import routing module
 import { AppRoutingModule } from "./app.routing";
+import { AppComponent } from "./components";
 // Import containers
 import { DefaultLayoutComponent } from "./containers";
 import { CredentialService, HttpService, UserService } from "./services";
@@ -28,7 +34,10 @@ const APP_CONTAINERS = [DefaultLayoutComponent];
 
 @NgModule({
   imports: [
+    CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AppAsideModule,
@@ -43,6 +52,7 @@ const APP_CONTAINERS = [DefaultLayoutComponent];
     IconModule,
     IconSetModule.forRoot(),
     HttpClientModule,
+    NgbModule,
   ],
   declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent],
   providers: [
