@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Form, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Credential } from "../../../../models";
-import { CredentialService } from "../../../../services";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Credential, User } from "../../../../models";
+import { CredentialService, UserService } from "../../../../services";
 
 @Component({
   templateUrl: "add-edit-credential.component.html",
@@ -13,13 +13,17 @@ export class AddEditCredentialComponent implements OnInit {
 
   form: FormGroup;
 
+  users: User[] = [];
+
   constructor(
     private fb: FormBuilder,
-    private credentialService: CredentialService
+    private credentialService: CredentialService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
     this.buildForm(new Credential({}));
+    this.getUsers();
   }
 
   public buildForm(data: Credential) {
@@ -35,6 +39,19 @@ export class AddEditCredentialComponent implements OnInit {
 
   get f() {
     return this.form.controls;
+  }
+
+  getUsers() {
+    this.userService.getAll().subscribe(
+      (response: any) => {
+        this.users = [];
+        this.isFormSubmitted = false;
+      },
+      (error: any) => {
+        this.isLoading = false;
+        this.isFormSubmitted = false;
+      }
+    );
   }
 
   onSubmit() {

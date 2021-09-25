@@ -1,6 +1,6 @@
 export const API_URL = {
   User: {
-    getAll: "user",
+    getAll: "user/get-all-users",
   },
   Credential: {
     getAll: "credential",
