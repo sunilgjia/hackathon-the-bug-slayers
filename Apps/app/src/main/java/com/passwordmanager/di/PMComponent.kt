@@ -4,6 +4,7 @@
 
 package com.passwordmanager.di
 import com.passwordmanager.DashboardActivity
+import com.passwordmanager.accountslist.AccountListFragment
 import com.passwordmanager.shared.di.CoreComponent
 import dagger.Component
 
@@ -15,5 +16,5 @@ import dagger.Component
 interface PMComponent {
 
     fun inject(mainActivity: DashboardActivity)
-
+    fun inject(accountListFragment: AccountListFragment)
 }

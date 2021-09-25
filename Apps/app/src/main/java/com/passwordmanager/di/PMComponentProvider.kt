@@ -5,5 +5,5 @@
 package com.passwordmanager.di
 
 interface PMComponentProvider {
-    fun getWafiComponent(): PMComponent
+    fun getPMComponent(): PMComponent
 }
