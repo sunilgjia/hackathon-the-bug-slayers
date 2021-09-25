@@ -10,7 +10,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div class="card mx-4">
+          <div class="card mx-6">
             <div class="card-body p-4">
               <form>
                 <h1>Register</h1>
@@ -47,7 +47,7 @@
                   <button type="button" class="btn btn-primary ml-5">Add User</button>
                 </div>
                 <div class="input-group mb-4">
-                  <div class="input-group-prepend" dropdown>
+                  <div class="input-group-prepend mr-1" dropdown>
                     <button type="button" class="btn btn-primary dropdown-toggle" dropdownToggle>Select User
                       <span class="caret"></span>
                     </button>
@@ -58,26 +58,30 @@
                       <a class="dropdown-item" href="#">Separated link</a>
                     </div>
                   </div>
-                  <div>
-                    <div class="clearfix">
-                        <small><b>View Only:</b></small>
-                      <label class="switch switch-label switch-pill switch-success switch-sm float-left">
-                        <input type="checkbox" class="switch-input" checked>
-                        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-                      </label>                      
-                      <small><b>Edit Only:</b></small>
+                  <div class="clearfix">
+                    <div class="d-inline-block">
+                      <small class="float-left"><b>View Only:</b></small>
                       <label class="switch switch-label switch-pill switch-success switch-sm float-left">
                         <input type="checkbox" class="switch-input" checked>
                         <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                       </label>
-                      <small><b>Delete Only:</b></small>
+                    </div>
+                    <div class="d-inline-block pl-2">
+                      <small class="float-left"><b>Edit Only:</b></small>
+                      <label class="switch switch-label switch-pill switch-success switch-sm float-left">
+                        <input type="checkbox" class="switch-input" checked>
+                        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+                      </label>
+                    </div>
+                    <div class="d-inline-block pl-2">
+                      <small class="float-left"><b>Delete Only:</b></small>
                       <label class="switch switch-label switch-pill switch-success switch-sm float-left">
                         <input type="checkbox" class="switch-input" checked>
                         <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
                       </label>
                     </div>
                   </div>
-                  
+
                 </div>
                 <button type="button" class="btn btn-block btn-success">Create Account</button>
               </form>
