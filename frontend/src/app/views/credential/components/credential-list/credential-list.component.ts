@@ -53,26 +53,19 @@ export class CredentialListComponent implements OnInit {
 
   copyToClipBoard(password: string) {
     this.toastr.success("Password copied successfully");
-    var copyText = document.getElementById("myInput");
-    // copyText.select();
-    // copyText.setSelectionRange(0, 99999);
     navigator.clipboard.writeText(password);
   }
 
-  add() {
+  addEdit(id: any) {
     const modalRef = this.modalSerivce.open(AddEditCredentialComponent, {
       size: "lg",
     });
-    modalRef.componentInstance.data.id = 0;
+    modalRef.componentInstance.id = id;
 
-    modalRef.result.then(
-      (data) => {
-        // on close
-      },
-      (reason) => {
-        // on dismiss
-      }
-    );
+    modalRef.result.then((data) => {
+      // on close
+      this.getAllCredential();
+    });
   }
 
   delete(id: any) {
