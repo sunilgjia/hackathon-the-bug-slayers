@@ -16,7 +16,7 @@ export class CredentialService {
     );
   }
 
-  post(data: any) {
+  add(data: any) {
     return this.httpSerivce.post(GlobalConstant.apiUrl.Credential.add, data);
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Form, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Credential } from "../../../../models";
+import { CredentialService } from "../../../../services";
 
 @Component({
   templateUrl: "add-edit-credential.component.html",
@@ -12,7 +13,10 @@ export class AddEditCredentialComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private credentialService: CredentialService
+  ) {}
 
   ngOnInit() {
     this.buildForm(new Credential({}));
@@ -26,7 +30,7 @@ export class AddEditCredentialComponent implements OnInit {
       password: [data.password, Validators.required],
       description: [data.description, Validators.required],
     });
-    this.isLoading = true;
+    this.isLoading = false;
   }
 
   get f() {
@@ -43,5 +47,14 @@ export class AddEditCredentialComponent implements OnInit {
     this.isLoading = true;
     const data: Credential = Object.assign(this.form.value);
 
+    this.credentialService.add(data).subscribe(
+      (response: any) => {
+        this.isFormSubmitted = false;
+      },
+      (error: any) => {
+        this.isLoading = false;
+        this.isFormSubmitted = false;
+      }
+    );
   }
 }
