@@ -31,6 +31,13 @@ export const routes: Routes = [
             (m) => m.DashboardModule
           ),
       },
+      {
+        path: "credential",
+        loadChildren: () =>
+          import("./views/credential/credential.module").then(
+            (m) => m.CredentialModule
+          ),
+      },
     ],
   },
 ];

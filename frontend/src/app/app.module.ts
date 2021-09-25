@@ -1,27 +1,30 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   AppAsideModule,
-  AppBreadcrumbModule, AppFooterModule, AppHeaderModule, AppSidebarModule
-} from '@coreui/angular';
-import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
-import { ChartsModule } from 'ng2-charts';
+  AppBreadcrumbModule,
+  AppFooterModule,
+  AppHeaderModule,
+  AppSidebarModule,
+} from "@coreui/angular";
+import { IconModule, IconSetModule } from "@coreui/icons-angular";
+import { ChartsModule } from "ng2-charts";
 // Import 3rd party components
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { AppComponent } from './app.component';
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { TabsModule } from "ngx-bootstrap/tabs";
+import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
+import { AppComponent } from "./app.component";
 // Import routing module
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from "./app.routing";
 // Import containers
-import { DefaultLayoutComponent } from './containers';
-import { LoginComponent } from './views/login/login.component';
+import { DefaultLayoutComponent } from "./containers";
+import { CredentialService, HttpService, UserService } from "./services";
+import { LoginComponent } from "./views/login/login.component";
 
-const APP_CONTAINERS = [
-  DefaultLayoutComponent
-];
+const APP_CONTAINERS = [DefaultLayoutComponent];
 
 @NgModule({
   imports: [
@@ -39,19 +42,18 @@ const APP_CONTAINERS = [
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
+    HttpClientModule,
   ],
-  declarations: [
-    AppComponent,
-    ...APP_CONTAINERS,
-    LoginComponent,
-  ],
+  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent],
   providers: [
     {
       provide: LocationStrategy,
-      useClass: HashLocationStrategy
+      useClass: HashLocationStrategy,
     },
-    IconSetService,
+    HttpService,
+    UserService,
+    CredentialService,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
