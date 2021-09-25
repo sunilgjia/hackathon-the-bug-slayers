@@ -57,7 +57,8 @@ export class AddEditCredentialComponent implements OnInit {
   getCredential() {
     this.credentialService.getById(this.id).subscribe(
       (response: any) => {
-        this.credential = new Credential({ response });
+        this.credential = new Credential(response);
+
         this.buildForm(this.credential);
         this.isFormSubmitted = false;
       },
