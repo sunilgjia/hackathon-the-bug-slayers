@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace PasswordManager.BussinessLayer.ViewModel
 {
@@ -21,6 +22,7 @@ namespace PasswordManager.BussinessLayer.ViewModel
         [Display(Name = "Users")]
         public virtual int UserId { get; set; }
 
+        [JsonIgnore]
         [ForeignKey("Id")]
         public virtual User Users { get; set; }
 

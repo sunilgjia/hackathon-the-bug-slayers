@@ -1,10 +1,8 @@
 ﻿using PasswordManager.BussinessLayer.Common;
 using PasswordManager.BussinessLayer.ViewModel;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using System.Linq;
 namespace PasswordManager.DataAccess.Repository
 {

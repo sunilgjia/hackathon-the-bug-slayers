@@ -3,7 +3,7 @@ using PasswordManager.DataAccess.Repository;
 
 namespace PasswordManager.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class CredentialController : ControllerBase
     {
@@ -13,5 +13,18 @@ namespace PasswordManager.API.Controllers
         {
             _credentialRepository = credentialRepository;
         }
+
+        [HttpGet]
+        public IActionResult GetAll([FromQuery] bool? isShared, int userId)
+        {
+            return Ok(_credentialRepository.GetAll(isShared,userId));
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetAllUsers(int id)
+        {
+            return Ok(_credentialRepository.GetById(id));
+        }
+
     }
 }
