@@ -1,0 +1,11 @@
+<!--
+  ~ Copyright (c) 2020. Binate Station Private Limited. All rights reserved.
+  -->
+
+<resources>
+    <declare-styleable name="OutlinedSpinner">
+        <attr name="outlinedSpinnerHint" format="string" />
+        <attr name="outlinedSpinnerEntries" format="reference" />
+        <attr name="outlinedSpinnerDrawableLeft" format="reference|color" />
+    </declare-styleable>
+</resources>

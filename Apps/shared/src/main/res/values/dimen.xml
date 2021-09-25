@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020. Binate Station Private Limited. All rights reserved.
+  -->
+
+<resources>
+    <dimen name="outlined_spinner_padding">12dp</dimen>
+    <dimen name="outlined_spinner_radius">4dp</dimen>
+</resources>

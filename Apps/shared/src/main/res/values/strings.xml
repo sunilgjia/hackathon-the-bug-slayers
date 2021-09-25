@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020. Binate Station Private Limited. All rights reserved.
+  -->
+
+<resources>
+    <string name="submit">Submit</string>
+    <string name="completed">Completed</string>
+    <string name="pending">Pending</string>
+    <string name="payment_pending">Payment Pending</string>
+    <string name="processing">Processing</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="gram">gm</string>
+    <string name="kilo_gram">Kg</string>
+    <string name="zero_point">Zero point</string>
+    <string name="points_with_value">%.0f points</string>
+    <string name="points_with_rupee_value">\u20B9%.2f</string>
+</resources>
