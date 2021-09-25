@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ChartsModule } from "ng2-charts";
 import { ButtonsModule } from "ngx-bootstrap/buttons";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { TabsModule } from "ngx-bootstrap/tabs";
 import {
   AddEditCredentialComponent,
   CredentialListComponent,
@@ -18,6 +19,7 @@ import { CredentialRoutingModule } from "./credential-routing.module";
     ReactiveFormsModule,
     CredentialRoutingModule,
     ChartsModule,
+    TabsModule,
     BsDropdownModule,
     ButtonsModule.forRoot(),
   ],
