@@ -47,6 +47,18 @@ export class CredentialListComponent implements OnInit {
       );
   }
 
+  viewPassword(index: number, value: boolean) {
+    this.credentials[index].isPasswordVisible = !value;
+  }
+
+  copyToClipBoard(password: string) {
+    this.toastr.error("Password copied successfully");
+    var copyText = document.getElementById("myInput");
+    // copyText.select();
+    // copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(password);
+  }
+
   add() {
     const modalRef = this.modalSerivce.open(AddEditCredentialComponent, {
       size: "lg",

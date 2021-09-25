@@ -5,10 +5,11 @@ export class Credential {
   password: string;
   description: string;
   userId: number;
-
+  
   canView: string;
   canEdit: string;
   canDelete: string;
+  isPasswordVisible: boolean;
 
   constructor(data) {
     this.id = data.id || 0;
@@ -22,5 +23,6 @@ export class Credential {
     this.canView = data.canView || false;
     this.canDelete = data.canDelete || false;
     this.canEdit = data.canEdit || false;
+    this.isPasswordVisible = data.isPasswordVisible || false;
   }
 }
